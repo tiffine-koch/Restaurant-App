@@ -19,11 +19,11 @@
     <tbody ng-repeat='restaurant in restaurants | filter: filterText track by $index'>
       <tr>
         <td>{{$index + 1}}</td>
-        <td>{{Time}}</td>
-        <td>{{Name}}</td>
-        <td>{{PartySize}}</td>
-        <td>{{Indoor}}</td>
-        <td>{{Arrived}}</td>
+        <td>{{restaurant.Time | date:'short'}}</td>
+        <td>{{restaurant.Name}}</td>
+        <td>{{restaurant.PartySize}}</td>
+        <td>{{restaurant.Indoor}}</td>
+        <td>{{restaurant.Arrived}}</td>
         <td>
           <a type="button" ng-click="editDiner($index, diner)" class="btn-floating yellow darken-1" ng-href='#/entry'>
             <i class="tiny material-icons">mode_edit</i>
