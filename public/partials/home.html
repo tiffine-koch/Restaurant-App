@@ -1,7 +1,21 @@
 <div class="jumbotron">
   <h1 id="mainHeader">Reservation Now</h1>
 </div>
-
+<div class="row">
+  <div class="input-field col s12 m12">
+    <input type="text" class="filterLine" ng-model="filterText">
+    <label for="">Search Reservations By Name</label>
+  </div>
+</div>
+<div class="row">
+  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>4:00PM</a>
+  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>5:00PM</a>
+  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>6:00PM</a>
+  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>7:00PM</a>
+  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>8:00PM</a>
+  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>9:00PM</a>
+  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>10:00PM</a>
+</div>
 <table>
     <thead>
       <tr>
@@ -22,15 +36,25 @@
         <td>{{restaurant.Time | date:'short'}}</td>
         <td>{{restaurant.Name}}</td>
         <td>{{restaurant.PartySize}}</td>
-        <td>{{restaurant.Indoor}}</td>
-        <td>{{restaurant.Arrived}}</td>
         <td>
-          <a type="button" ng-click="editDiner($index, diner)" class="btn-floating yellow darken-1" ng-href='#/entry'>
+          <p>
+            <input type="checkbox" id="test5" />
+            <label for="test5"></label>
+          </p>
+        </td>
+        <td>
+          <p>
+            <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+            <label for="filled-in-box"></label>
+          </p>
+        </td>
+        <td>
+          <a type="button" ng-click="editDiner($index, diner)" class="btn-floating light-green darken-2" ng-href='#/entry'>
             <i class="tiny material-icons">mode_edit</i>
           </a>
         </td>
         <td>
-          <button ng-click="deleteDine($index, diner)" type="button" class="btn-floating red"><i class="small material-icons left">not_interested</i>Delete Me</button>
+          <button ng-click="deleteDine($index, diner)" type="button" class="btn-floating  deep-orange lighten-2"><i class="small material-icons left">not_interested</i>Delete Me</button>
         </td>
       </tr>
     </tbody>

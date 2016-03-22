@@ -1,42 +1,38 @@
 <div class="container">
     <form class="col s12" name='destForm' autocomplete='off'>
       <div class="row">
-        <div id="formBorder" class='col s6'>
+        <div id="formBorder" class="col s6">
             <img id="formPic" src="img/table.jpeg" alt="">
         </div>
         <div class="col s6" id="formHeader">
           <h3>Add a Reservation</h3>
         </div>
-      </div>
+      </div>    
 
     <div class="row">
       <div class="input-field col s6">
         <i class="material-icons prefix">perm_identity</i>
-        <input id="icon_prefix" type="text" name="name" ng-model='restaurant.name' name='name' required ng-class='{invalidInput: destForm.name.$invalid && destForm.name.$touched}' minlength='1'>
+        <input id="icon_prefix" type="text" name="name" ng-model='restaurant.name' name='name' required minlength='1'>
         <label for="icon_prefix">Reservation Name</label>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">call</i>
-        <input id="icon_prefix" type="number" name="phone" ng-model='restaurant.phone' name='phone' required ng-class='{invalidInput: destForm.name.$invalid && destForm.name.$touched}' minlength='1'>
+        <input id="icon_prefix" type="number" name="phone" ng-model='restaurant.phone' required minlength='1'>
         <label for="icon_prefix">Phone Number</label>
       </div>
     </div>
     <div class="row">
-        <div class="input-field col s4">
+        <div class="input-field col s6">
         <i class="material-icons prefix">query_builder</i>
-        <input id="icon_telephone" type="time" class="validate" ng-model='restaurant.time' name='time' required>
+        <input id="icon_telephone" type="datetime-local" class="validate" ng-model='restaurant.time' name='time' required>
       </div>
-      <div class="input-field col s4">
-        <i class="material-icons prefix">today</i>
-        <input type="date" class="" ng-model="restaurant.date" placeholder="YYYY-DD-MM" required>
-      </div>
-     <div class="input-field col s4">
+     <div class="input-field col s6">
          <i class="material-icons prefix">supervisor_account</i>
-         <input type="number" class="validate" name='party' ng-model='restaurant.party' name='activity1' ng-class='{invalidInput: destForm.activity1.$invalid && destForm.activity1.$touched}' required>
+         <input type="number" class="validate" name='party' ng-model='restaurant.partySize' required>
          <label for="">Party Size</label>
        </div>
     </div>
-     <a type='button' class="btn-floating btn-large green"><i class="material-icons prefix" ng-click="submitEntryForm()" ui-sref='destinations'>done</i></a>
+     <a type='button' class="btn-floating btn-large green"><i class="material-icons prefix" ng-click="submitEntryForm(restaurant)" ui-sref='home'>done</i></a>
      <!-- <p id='pText'>Submit!</p> -->
    </form>
  </div>

@@ -2,7 +2,7 @@
 
 var app = angular.module('myApp');
 
-app.controller('homeCtrl', function($scope, $http, $state, $stateParams) {
+app.controller('homeCtrl', function($scope, $http, $state) {
   console.log('homeCtrl working');
 
   $http({
@@ -15,21 +15,24 @@ app.controller('homeCtrl', function($scope, $http, $state, $stateParams) {
   });
 });
 
-app.controller('entryCtrl', function($scope, $http, $state, $stateParams) {
-  console.log('entryCtrl working');
-  $scope.restaurants = [];
-  var restaurant = {Time: $scope.restaurant.Time, Phone: $scope.restaurant.Phone, Name: $scope.restaurant.Name, PartySize: $scope.restaurant.PartySize, Indoor: $scope.restaurant.Indoor, Arrived: $scope.restaurant.Arrived};
-  $scope.restaurants.push(restaurant);
-  $http({
-    method: 'POST',
-    url: '/restaurants',
-    data: restaurant
-    }).then(function(response){
-      swal("Your destination has been uploaded!");
-    }, function(err){
-      console.error(err);
-    })
-    $scope.restaurant = {};
-  };
+app.controller('entryCtrl', function($scope, $http, $state) {
 
+  $scope.submitEntryForm = function() {
+
+    console.log('entryCtrl working');
+    $scope.restaurants = [];
+    var restaurant = {Phone: $scope.restaurant.phone, Name: $scope.restaurant.name, PartySize: $scope.restaurant.party, Indoor: $scope.restaurant.indoor, Arrived: $scope.restaurant.arrived};
+    $scope.restaurants.push(restaurant);
+
+    $http({
+      method: 'POST',
+      url: '/restaurants',
+      data: restaurant
+      }).then(function(response){
+        swal("Your destination has been uploaded!");
+      }, function(err){
+        console.error(err);
+      })
+      $scope.restaurant = {};
+    }  
 });
