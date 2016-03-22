@@ -9,7 +9,9 @@ var app = express();
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/restaurantdb', function(err) {
+const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/restuarantsapp';
+
+mongoose.connect(mongoUrl, function(err) {
   if(err) {
     console.log(err);
   } else {

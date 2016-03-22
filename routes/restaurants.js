@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Restaurant = require('../models/restaurant');
+var Restaurant = require('../models/Restaurant');
 
 router.get('/', function(req, res, next) {
   Restaurant.find({}, function(err, restaurants) {
