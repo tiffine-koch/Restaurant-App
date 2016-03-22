@@ -1,0 +1,37 @@
+<div class="jumbotron">
+  <h1 id="mainHeader">Reservation Now</h1>
+</div>
+
+<table>
+    <thead>
+      <tr>
+          <th>#</th>
+          <th>Time</th>
+          <th>Reservation Name</th>
+          <th>Party Size</th>
+          <th>Indoor?</th>
+          <th>Arrived?</th>
+          <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody ng-repeat='restaurant in restaurants | filter: filterText track by $index'>
+      <tr>
+        <td>{{$index + 1}}</td>
+        <td>{{Time}}</td>
+        <td>{{Name}}</td>
+        <td>{{PartySize}}</td>
+        <td>{{Indoor}}</td>
+        <td>{{Arrived}}</td>
+        <td>
+          <a type="button" ng-click="editDiner($index, diner)" class="btn-floating yellow darken-1" ng-href='#/entry'>
+            <i class="tiny material-icons">mode_edit</i>
+          </a>
+        </td>
+        <td>
+          <button ng-click="deleteDine($index, diner)" type="button" class="btn-floating red"><i class="small material-icons left">not_interested</i>Delete Me</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
