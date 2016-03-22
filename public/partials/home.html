@@ -36,13 +36,13 @@
       </tr>
     </thead>
 
-    <tbody ng-repeat="restaurant in restaurants | filter: filterText track by $index | orderBy: 'Time'">
+    <tbody ng-repeat="restaurant in restaurants | orderBy: 'date' | filter: filterText track by $index">
       <tr>
         <td>{{$index + 1}}</td>
-        <td>{{restaurant.Time | date:'short'}}</td>
-        <td>{{restaurant.Name}}</td>
-        <td>{{restaurant.Phone}}</td>
-        <td>{{restaurant.PartySize}}</td>
+        <td>{{restaurant.date | date:'short'}}</td>
+        <td>{{restaurant.name}}</td>
+        <td>{{restaurant.phone}}</td>
+        <td>{{restaurant.partySize}}</td>
         <td>
           <p>
             <input type="checkbox" id="test{{$index + 1}}" ng-model='restaurant.indoor' ng-change="guestIndoors()"/>

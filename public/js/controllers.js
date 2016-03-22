@@ -3,8 +3,6 @@
 var app = angular.module('myApp');
 
 app.controller('homeCtrl', function($scope, $http, $state) {
-  console.log('homeCtrl working');
-
   $http({
     method: "GET",
     url: "/restaurants"
@@ -30,7 +28,6 @@ app.controller('homeCtrl', function($scope, $http, $state) {
   }
   $scope.editRest = function(index, restaurant) {
     var id = restaurant._id
-    console.log('id', id);
     var edited = $scope.restaurants.splice(index, 1);
     $http({
       method: 'PUT',
@@ -58,9 +55,7 @@ app.controller('homeCtrl', function($scope, $http, $state) {
       Arrive = true;
     }
   }
-
   $scope.selectedButton;
-
   $scope.selectButton = function(id) {
       $scope.selectedButton = id;
       console.log('selected');
@@ -70,10 +65,7 @@ app.controller('homeCtrl', function($scope, $http, $state) {
 app.controller('entryCtrl', function($scope, $http, $state) {
   $scope.submitEntryForm = function() {
     var currentTime = new Date;
-    console.log(currentTime);
-    var restaurant = {Time: $scope.restaurant.time, Phone: $scope.restaurant.phone, Name: $scope.restaurant.name, PartySize: $scope.restaurant.party, Indoor: $scope.restaurant.indoor, Arrived: $scope.restaurant.arrived};
-    console.log('time:', $scope.restaurant.time);
-    console.log('restaurant', restaurant);
+    var restaurant = {date: $scope.restaurant.date, phone: $scope.restaurant.phone, name: $scope.restaurant.name, partySize: $scope.restaurant.party, indoor: $scope.restaurant.indoor, arrived: $scope.restaurant.arrived};
     $http({
       method: 'POST',
       url: '/restaurants',

@@ -3,12 +3,12 @@
 var mongoose = require('mongoose');
 
 var restaurantSchema = mongoose.Schema({
-  Time: Date,
-  Phone: Number,
-  Name: String,
-  PartySize: Number,
-  Indoor: Boolean,
-  Arrived: Boolean
+  date: Date,
+  phone: Number,
+  name: String,
+  partySize: Number,
+  indoor: Boolean,
+  arrived: Boolean
 });
 
 var Restaurant = mongoose.model('Restaurant', restaurantSchema);
