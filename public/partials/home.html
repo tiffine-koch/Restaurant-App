@@ -7,14 +7,19 @@
     <label for="">Search Reservations By Name</label>
   </div>
 </div>
+<p>Search Reservations by Time</p>
 <div class="row">
-  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>4:00PM</a>
-  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>5:00PM</a>
-  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>6:00PM</a>
-  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>7:00PM</a>
-  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>8:00PM</a>
-  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>9:00PM</a>
-  <a class="waves-effect waves-light btn lime accent-4"><i class="material-icons left">query_builder</i>10:00PM</a>
+  <button class="waves-effect waves-light btn teal lighten-3" data-id"4" ng-disabled="selectedButton && selectedButton != 4" ng-click="selectButton(4)"><i class="material-icons left">query_builder</i>4:00PM</button>
+  <button class="waves-effect waves-light btn teal lighten-3" data-id"5" ng-disabled="selectedButton && selectedButton != 5" ng-click="selectButton(5)"><i class="material-icons left">query_builder</i>5:00PM</button>
+  <button class="waves-effect waves-light btn teal lighten-3" data-id"6" ng-disabled="selectedButton && selectedButton != 6" ng-click="selectButton(6)"><i class="material-icons left">query_builder</i>6:00PM</button>
+
+  <button class="waves-effect waves-light btn teal lighten-3" data-id"7" ng-disabled="selectedButton && selectedButton != 7" ng-click="selectButton(7)"><i class="material-icons left">query_builder</i>7:00PM</button>
+
+  <button class="waves-effect waves-light btn teal lighten-3" data-id"8" ng-disabled="selectedButton && selectedButton != 8" ng-click="selectButton(8)"><i class="material-icons left">query_builder</i>8:00PM</button>
+
+  <button class="waves-effect waves-light btn teal lighten-3" data-id"9" ng-disabled="selectedButton && selectedButton != 9" ng-click="selectButton(9)"><i class="material-icons left">query_builder</i>9:00PM</button>
+
+  <button class="waves-effect waves-light btn teal lighten-3" data-id"10" ng-disabled="selectedButton && selectedButton != 10" ng-click="selectButton(10)"><i class="material-icons left">query_builder</i>10:00PM</button>
 </div>
 <table>
     <thead>
@@ -30,7 +35,7 @@
       </tr>
     </thead>
 
-    <tbody ng-repeat='restaurant in restaurants | filter: filterText track by $index'>
+    <tbody ng-repeat="restaurant in restaurants | filter: filterText track by $index | orderBy: 'Time'">
       <tr>
         <td>{{$index + 1}}</td>
         <td>{{restaurant.Time | date:'short'}}</td>
@@ -38,23 +43,23 @@
         <td>{{restaurant.PartySize}}</td>
         <td>
           <p>
-            <input type="checkbox" id="test5" />
-            <label for="test5"></label>
+            <input type="checkbox" id="test{{$index + 1}}" ng-model='restaurant.indoor' ng-change="guestIndoors()"/>
+            <label for="test{{$index + 1}}"></label>
           </p>
         </td>
         <td>
           <p>
-            <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-            <label for="filled-in-box"></label>
+            <input type="checkbox" id="next{{$index + 1}}" ng-model='restaurant.arrived' ng-change="guestArrived()"/>
+            <label for="next{{$index + 1}}"></label>
           </p>
         </td>
         <td>
-          <a type="button" ng-click="editRest($index, restaurant)" class="btn-floating light-green darken-2" ng-href='#/entry'>
+          <a type="button" ng-click="editRest($index, restaurant)" class="btn-floating cyan lighten-2" ng-href='#/entry'>
             <i class="tiny material-icons">mode_edit</i>
           </a>
         </td>
         <td>
-          <button ng-click="deleteRest($index, restaurant)" type="button" class="btn-floating  deep-orange lighten-2"><i class="small material-icons left">not_interested</i>Delete Me</button>
+          <button ng-click="deleteRest($index, restaurant)" type="button" class="btn-floating deep-orange lighten-2"><i class="small material-icons left">not_interested</i>Delete Me</button>
         </td>
       </tr>
     </tbody>

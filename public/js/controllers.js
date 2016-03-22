@@ -10,14 +10,13 @@ app.controller('homeCtrl', function($scope, $http, $state) {
     url: "/restaurants"
     }).then(function(response){
       $scope.restaurants= response.data;
+      console.log($scope.restaurants);
     }, function(error){
       console.log('error');
   });
 
   $scope.deleteRest = function(index, restaurant) {
-    console.log('delete button');
     var id = restaurant._id
-    console.log('id', id);
     var deleted = $scope.restaurants.splice(index, 1);
     $http({
       method: 'DELETE',
@@ -43,23 +42,44 @@ app.controller('homeCtrl', function($scope, $http, $state) {
       console.error(err);
     })
   }
+
+  function guestIndoors() {
+    if(!selected) {
+      Indoor = false;
+    } else {
+      Indoor = true;
+    }
+  }
+
+  function guestArrived() {
+    if(!selected) {
+      Arrived = false;
+    } else {
+      Arrive = true;
+    }
+  }
+
+  $scope.selectedButton;
+
+  $scope.selectButton = function(id) {
+      $scope.selectedButton = id;
+      console.log('selected');
+  }
 });
 
 app.controller('entryCtrl', function($scope, $http, $state) {
-
   $scope.submitEntryForm = function() {
-
-    console.log('entryCtrl working');
-    $scope.restaurants = [];
-    var restaurant = {Phone: $scope.restaurant.phone, Name: $scope.restaurant.name, PartySize: $scope.restaurant.party, Indoor: $scope.restaurant.indoor, Arrived: $scope.restaurant.arrived};
-    $scope.restaurants.push(restaurant);
-
+    var currentTime = new Date;
+    console.log(currentTime);
+    var restaurant = {Time: $scope.restaurant.time, Phone: $scope.restaurant.phone, Name: $scope.restaurant.name, PartySize: $scope.restaurant.party, Indoor: $scope.restaurant.indoor, Arrived: $scope.restaurant.arrived};
+    console.log('time:', $scope.restaurant.time);
+    console.log('restaurant', restaurant);
     $http({
       method: 'POST',
       url: '/restaurants',
       data: restaurant
       }).then(function(response){
-        swal("Your destination has been uploaded!");
+        swal("Your reservation has been uploaded!");
       }, function(err){
         console.error(err);
       })
