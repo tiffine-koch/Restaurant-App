@@ -9,6 +9,6 @@ app.on('stormpath.ready', function() {
 });
 
 
-app.get('/home', stormpath.loginRequired, function(req, res) {
+app.get('/', stormpath.loginRequired, function(req, res) {
   res.send('You have reached the dashboard page! You must be logged in.');
 });
