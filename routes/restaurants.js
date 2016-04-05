@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
+//use restaurant.create shortcut - minus new restaurant line - pass in req.body
 router.post('/', function(req, res, next) {
   var restaurant = new Restaurant(req.body);
   console.log(restaurant);
